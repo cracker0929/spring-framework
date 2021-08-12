@@ -8,6 +8,10 @@ public class Test {
 		AnnotationConfigApplicationContext
 				ac
 				= new AnnotationConfigApplicationContext(AppConfig.class);
-		System.out.println("当前时间:"+System.currentTimeMillis()+"||||||"+ac.getBean(User.class));
+		System.out.println("当前时间:" + System.currentTimeMillis() + "||||||" + ac.getBean(User.class));
+
+		System.out.println("propertyValues:" + ac.getBeanDefinition("user").getPropertyValues());
+
+
 	}
 }
