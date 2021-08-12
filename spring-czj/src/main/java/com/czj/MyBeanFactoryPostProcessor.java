@@ -8,7 +8,7 @@ import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.stereotype.Component;
 
 /**
- * java类作用描述
+ * 自定义后置处理器
  *
  * @author Zhongjie.Cai
  * @date 2021/8/12 1:09
@@ -19,11 +19,11 @@ public class MyBeanFactoryPostProcessor implements BeanFactoryPostProcessor {
 	public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
 		System.out.println("调用MyBeanFactoryPostProcessor的postProcessBeanFactory");
 		BeanDefinition bd = beanFactory.getBeanDefinition("user");
-		System.out.println("属性名称============" + bd.getPropertyValues());
+		System.out.println("----------属性名称---------");
+		System.out.println(System.getProperty("file.encoding"));
 		MutablePropertyValues pv = bd.getPropertyValues();
-		if (pv.contains("remark")) {
-			pv.addPropertyValue("remark", "把备注信息修改一下");
-		}
+		pv.addPropertyValue("id", 2);
+		pv.addPropertyValue("name", "modify");
 		bd.setScope(BeanDefinition.SCOPE_SINGLETON);
 	}
 }

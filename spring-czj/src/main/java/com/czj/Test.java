@@ -11,7 +11,8 @@ public class Test {
 		System.out.println("当前时间:" + System.currentTimeMillis() + "||||||" + ac.getBean(User.class));
 
 		System.out.println("propertyValues:" + ac.getBeanDefinition("user").getPropertyValues());
-
+		System.out.println("属性");
+		System.out.println(System.getProperty("file.encoding"));
 
 	}
 }
